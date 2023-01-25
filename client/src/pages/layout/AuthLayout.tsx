@@ -1,13 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { InputCard } from "../../components/InputCard";
 
 const AuthLayout = () => {
 	return (
 		<>
-			<div>
-				<h1>hello</h1>
-			</div>
-			<Outlet />
+			<InputCard>
+				<InputCard.body>
+					<Outlet />
+				</InputCard.body>
+			</InputCard>
 		</>
 	);
 };
