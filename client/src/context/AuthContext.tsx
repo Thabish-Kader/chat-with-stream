@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 type AuthContext = {
 	signup: UseMutationResult<AxiosResponse, unknown, User>;
+	login: UseMutationResult<{ token: string; user: User }, unknown, User>;
 };
 const Context = createContext<AuthContext | null>(null);
 type User = {
@@ -30,5 +31,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			navigate("/login");
 		},
 	});
-	return <Context.Provider value={{ signup }}>{children}</Context.Provider>;
+
+	const login = useMutation({
+		mutationFn: async (id: string) => {
+			const res = await axios.post(
+				`${import.meta.env.VITE_SERVER_URL}/login`,
+				id
+			);
+			return res.data;
+		},
+	});
+	return (
+		<Context.Provider value={{ signup, login }}>
+			{children}
+		</Context.Provider>
+	);
 };
