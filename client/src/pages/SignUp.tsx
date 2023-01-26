@@ -1,14 +1,29 @@
 import React, { useRef } from "react";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
+import { useAuth } from "../context/AuthContext";
 
 const SignUp = () => {
+	const { signup } = useAuth();
 	const usernameRef = useRef<HTMLInputElement>(null);
 	const nameRef = useRef<HTMLInputElement>(null);
 	const imageUrlRef = useRef<HTMLInputElement>(null);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		if (signup.isLoading) return;
+		const username = usernameRef.current?.value;
+		const name = nameRef.current?.value;
+		const imageUrl = imageUrlRef.current?.value;
+		if (
+			username == null ||
+			username === "" ||
+			name == null ||
+			name === ""
+		) {
+			return;
+		}
+		signup.mutate({ id: username, name, image: imageUrl });
 	};
 
 	return (
