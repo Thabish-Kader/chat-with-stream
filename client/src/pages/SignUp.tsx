@@ -40,7 +40,7 @@ const SignUp = () => {
 				<label htmlFor="imageUrl">Image Url</label>
 				<Input id="imageUrl" type="url" ref={imageUrlRef} />
 				<Button type="submit" className="col-span-full">
-					Sign up
+					{signup.isLoading ? "Loading..." : "Sign Up"}
 				</Button>
 			</form>
 		</>

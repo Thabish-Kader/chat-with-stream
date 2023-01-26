@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const signup = useMutation({
 		mutationFn: (user: User) => {
 			return axios.post(
-				`/${import.meta.env.VITE_SERVER_URL}/signup`,
+				`${import.meta.env.VITE_SERVER_URL}/signup`,
 				user
 			);
 		},
