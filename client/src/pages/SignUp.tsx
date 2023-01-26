@@ -13,9 +13,9 @@ const SignUp = () => {
 				<label htmlFor="userName">Username</label>
 				<Input id="name" required ref={usernameRef} />
 				<label htmlFor="name">Name</label>
-				<Input id="name" type="url" required ref={nameRef} />
+				<Input id="name" ref={nameRef} />
 				<label htmlFor="imageUrl">Image Url</label>
-				<Input id="imageUrl" type="url" required ref={imageUrlRef} />
+				<Input id="imageUrl" type="url" ref={imageUrlRef} />
 				<Button type="submit" className="col-span-full">
 					Sign up
 				</Button>
