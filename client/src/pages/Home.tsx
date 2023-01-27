@@ -39,7 +39,7 @@ export default Home;
 function Channels({ loadedChannels }: ChannelListMessengerProps) {
 	const navigate = useNavigate();
 	const { setActiveChannel, channel: activeChannel } = useChatContext();
-
+	const { logout } = useLoggedInAuth();
 	return (
 		<div className="w-60 flex flex-col gap-4 m-3 h-full">
 			<Button onClick={() => navigate("/channel/new")}>
@@ -73,9 +73,9 @@ function Channels({ loadedChannels }: ChannelListMessengerProps) {
 				  })
 				: "No Conversations"}
 			<hr className="border-gray-500 mt-auto" />
-			{/* <Button onClick={() => logout.mutate()} disabled={logout.isLoading}>
+			<Button onClick={() => logout.mutate()} disabled={logout.isLoading}>
 				Logout
-			</Button> */}
+			</Button>
 		</div>
 	);
 }
